@@ -13,6 +13,9 @@
 		A0B5D6A120D0E8F7008E701C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B5D6A020D0E8F7008E701C /* Assets.xcassets */; };
 		A0B5D6A420D0E8F7008E701C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B5D6A220D0E8F7008E701C /* LaunchScreen.storyboard */; };
 		A0B5D6AC20D0EAF1008E701C /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6AB20D0EAF1008E701C /* OptionsViewController.swift */; };
+		A0B5D6B220D0EE7F008E701C /* SegueConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6B120D0EE7F008E701C /* SegueConstants.swift */; };
+		A0B5D6B420D0F0B7008E701C /* ArithmeticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6B320D0F0B7008E701C /* ArithmeticViewController.swift */; };
+		A0B5D6B620D0F41C008E701C /* ArithmeticConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6B520D0F41C008E701C /* ArithmeticConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		A0B5D6A320D0E8F7008E701C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0B5D6A520D0E8F7008E701C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0B5D6AB20D0EAF1008E701C /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		A0B5D6B120D0EE7F008E701C /* SegueConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueConstants.swift; sourceTree = "<group>"; };
+		A0B5D6B320D0F0B7008E701C /* ArithmeticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticViewController.swift; sourceTree = "<group>"; };
+		A0B5D6B520D0F41C008E701C /* ArithmeticConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticConstants.swift; sourceTree = "<group>"; };
 		E53790CAB6CA9A0FE73EB3B0 /* Pods_mathapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mathapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,7 @@
 		A0B5D69820D0E8F7008E701C /* mathapp */ = {
 			isa = PBXGroup;
 			children = (
+				A0B5D6B020D0EE5F008E701C /* Constants */,
 				A0B5D69920D0E8F7008E701C /* AppDelegate.swift */,
 				A0B5D69D20D0E8F7008E701C /* Main.storyboard */,
 				A0B5D6A020D0E8F7008E701C /* Assets.xcassets */,
@@ -92,8 +99,18 @@
 			isa = PBXGroup;
 			children = (
 				A0B5D6AB20D0EAF1008E701C /* OptionsViewController.swift */,
+				A0B5D6B320D0F0B7008E701C /* ArithmeticViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A0B5D6B020D0EE5F008E701C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A0B5D6B120D0EE7F008E701C /* SegueConstants.swift */,
+				A0B5D6B520D0F41C008E701C /* ArithmeticConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,8 +207,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B5D6B620D0F41C008E701C /* ArithmeticConstants.swift in Sources */,
 				A0B5D69A20D0E8F7008E701C /* AppDelegate.swift in Sources */,
 				A0B5D6AC20D0EAF1008E701C /* OptionsViewController.swift in Sources */,
+				A0B5D6B420D0F0B7008E701C /* ArithmeticViewController.swift in Sources */,
+				A0B5D6B220D0EE7F008E701C /* SegueConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

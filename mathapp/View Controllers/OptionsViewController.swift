@@ -10,6 +10,8 @@ import UIKit
 
 class OptionsViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +23,26 @@ class OptionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func OnNextPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: SegueIdentifier.multiply, sender: self)
     }
-    */
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {return}
+        
+        if identifier == SegueIdentifier.multiply {
+            if let destination = segue.destination as? ArithmeticViewController {
+                destination.function = Function.multiply
+            }
+        }
+        
+    }
 
+}
+
+extension OptionsViewController {
+    @IBAction func unwindFromArithmeticVC(segue: UIStoryboardSegue) {
+        //just to unwind as it is good style
+    }
 }
