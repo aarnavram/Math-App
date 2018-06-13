@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6199E9D492666B408255D27B /* Pods_mathapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53790CAB6CA9A0FE73EB3B0 /* Pods_mathapp.framework */; };
 		A0B5D69A20D0E8F7008E701C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D69920D0E8F7008E701C /* AppDelegate.swift */; };
-		A0B5D69C20D0E8F7008E701C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D69B20D0E8F7008E701C /* ViewController.swift */; };
 		A0B5D69F20D0E8F7008E701C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B5D69D20D0E8F7008E701C /* Main.storyboard */; };
 		A0B5D6A120D0E8F7008E701C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0B5D6A020D0E8F7008E701C /* Assets.xcassets */; };
 		A0B5D6A420D0E8F7008E701C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0B5D6A220D0E8F7008E701C /* LaunchScreen.storyboard */; };
+		A0B5D6AC20D0EAF1008E701C /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6AB20D0EAF1008E701C /* OptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88BEC6B39EF5D153D42BC582 /* Pods-mathapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mathapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mathapp/Pods-mathapp.debug.xcconfig"; sourceTree = "<group>"; };
+		9604A0683D71BF341B20B400 /* Pods-mathapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mathapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-mathapp/Pods-mathapp.release.xcconfig"; sourceTree = "<group>"; };
 		A0B5D69620D0E8F7008E701C /* mathapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mathapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B5D69920D0E8F7008E701C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0B5D69B20D0E8F7008E701C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A0B5D69E20D0E8F7008E701C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0B5D6A020D0E8F7008E701C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0B5D6A320D0E8F7008E701C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0B5D6A520D0E8F7008E701C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0B5D6AB20D0EAF1008E701C /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		E53790CAB6CA9A0FE73EB3B0 /* Pods_mathapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mathapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6199E9D492666B408255D27B /* Pods_mathapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49F2E6CD247B944EB6A8F150 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88BEC6B39EF5D153D42BC582 /* Pods-mathapp.debug.xcconfig */,
+				9604A0683D71BF341B20B400 /* Pods-mathapp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		52AE8959057ACDD906F34A91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E53790CAB6CA9A0FE73EB3B0 /* Pods_mathapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A0B5D68D20D0E8F7008E701C = {
 			isa = PBXGroup;
 			children = (
 				A0B5D69820D0E8F7008E701C /* mathapp */,
 				A0B5D69720D0E8F7008E701C /* Products */,
+				49F2E6CD247B944EB6A8F150 /* Pods */,
+				52AE8959057ACDD906F34A91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +79,21 @@
 			isa = PBXGroup;
 			children = (
 				A0B5D69920D0E8F7008E701C /* AppDelegate.swift */,
-				A0B5D69B20D0E8F7008E701C /* ViewController.swift */,
 				A0B5D69D20D0E8F7008E701C /* Main.storyboard */,
 				A0B5D6A020D0E8F7008E701C /* Assets.xcassets */,
 				A0B5D6A220D0E8F7008E701C /* LaunchScreen.storyboard */,
 				A0B5D6A520D0E8F7008E701C /* Info.plist */,
+				A0B5D6AD20D0EAF8008E701C /* View Controllers */,
 			);
 			path = mathapp;
+			sourceTree = "<group>";
+		};
+		A0B5D6AD20D0EAF8008E701C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A0B5D6AB20D0EAF1008E701C /* OptionsViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +103,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0B5D6A820D0E8F7008E701C /* Build configuration list for PBXNativeTarget "mathapp" */;
 			buildPhases = (
+				878B8ACD315AF616701447EC /* [CP] Check Pods Manifest.lock */,
 				A0B5D69220D0E8F7008E701C /* Sources */,
 				A0B5D69320D0E8F7008E701C /* Frameworks */,
 				A0B5D69420D0E8F7008E701C /* Resources */,
@@ -131,13 +164,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		878B8ACD315AF616701447EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mathapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A0B5D69220D0E8F7008E701C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0B5D69C20D0E8F7008E701C /* ViewController.swift in Sources */,
 				A0B5D69A20D0E8F7008E701C /* AppDelegate.swift in Sources */,
+				A0B5D6AC20D0EAF1008E701C /* OptionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +326,7 @@
 		};
 		A0B5D6A920D0E8F7008E701C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88BEC6B39EF5D153D42BC582 /* Pods-mathapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +342,7 @@
 		};
 		A0B5D6AA20D0E8F7008E701C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9604A0683D71BF341B20B400 /* Pods-mathapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
