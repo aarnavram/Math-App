@@ -14,7 +14,8 @@ class OptionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.tintColor = UIColor.white
         // Do any additional setup after loading the view.
     }
 
@@ -23,26 +24,23 @@ class OptionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //debug button purposes to just move to next screen
     @IBAction func OnNextPressed(_ sender: Any) {
         self.performSegue(withIdentifier: SegueIdentifier.multiply, sender: self)
     }
     
     
+    //depending on the button send the right info to the next VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
         
         if identifier == SegueIdentifier.multiply {
             if let destination = segue.destination as? ArithmeticViewController {
-                destination.function = Function.multiply
+                destination.function = Function.random
             }
         }
         
     }
 
-}
-
-extension OptionsViewController {
-    @IBAction func unwindFromArithmeticVC(segue: UIStoryboardSegue) {
-        //just to unwind as it is good style
-    }
 }

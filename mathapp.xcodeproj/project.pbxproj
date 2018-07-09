@@ -16,6 +16,8 @@
 		A0B5D6B220D0EE7F008E701C /* SegueConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6B120D0EE7F008E701C /* SegueConstants.swift */; };
 		A0B5D6B420D0F0B7008E701C /* ArithmeticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6B320D0F0B7008E701C /* ArithmeticViewController.swift */; };
 		A0B5D6B620D0F41C008E701C /* ArithmeticConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6B520D0F41C008E701C /* ArithmeticConstants.swift */; };
+		A0B5D6B820D23189008E701C /* MNIST.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6B720D23188008E701C /* MNIST.mlmodel */; };
+		A0B5D6BB20D232EE008E701C /* MNISTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D6BA20D232EE008E701C /* MNISTClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		A0B5D6B120D0EE7F008E701C /* SegueConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueConstants.swift; sourceTree = "<group>"; };
 		A0B5D6B320D0F0B7008E701C /* ArithmeticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticViewController.swift; sourceTree = "<group>"; };
 		A0B5D6B520D0F41C008E701C /* ArithmeticConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticConstants.swift; sourceTree = "<group>"; };
+		A0B5D6B720D23188008E701C /* MNIST.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MNIST.mlmodel; sourceTree = "<group>"; };
+		A0B5D6BA20D232EE008E701C /* MNISTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNISTClient.swift; sourceTree = "<group>"; };
 		E53790CAB6CA9A0FE73EB3B0 /* Pods_mathapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mathapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +88,7 @@
 		A0B5D69820D0E8F7008E701C /* mathapp */ = {
 			isa = PBXGroup;
 			children = (
+				A0B5D6B920D2318C008E701C /* ML Models */,
 				A0B5D6B020D0EE5F008E701C /* Constants */,
 				A0B5D69920D0E8F7008E701C /* AppDelegate.swift */,
 				A0B5D69D20D0E8F7008E701C /* Main.storyboard */,
@@ -91,6 +96,7 @@
 				A0B5D6A220D0E8F7008E701C /* LaunchScreen.storyboard */,
 				A0B5D6A520D0E8F7008E701C /* Info.plist */,
 				A0B5D6AD20D0EAF8008E701C /* View Controllers */,
+				A0B5D6BC20D232F4008E701C /* Offline Clients */,
 			);
 			path = mathapp;
 			sourceTree = "<group>";
@@ -111,6 +117,22 @@
 				A0B5D6B520D0F41C008E701C /* ArithmeticConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		A0B5D6B920D2318C008E701C /* ML Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0B5D6B720D23188008E701C /* MNIST.mlmodel */,
+			);
+			path = "ML Models";
+			sourceTree = "<group>";
+		};
+		A0B5D6BC20D232F4008E701C /* Offline Clients */ = {
+			isa = PBXGroup;
+			children = (
+				A0B5D6BA20D232EE008E701C /* MNISTClient.swift */,
+			);
+			path = "Offline Clients";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B5D6B820D23189008E701C /* MNIST.mlmodel in Sources */,
 				A0B5D6B620D0F41C008E701C /* ArithmeticConstants.swift in Sources */,
+				A0B5D6BB20D232EE008E701C /* MNISTClient.swift in Sources */,
 				A0B5D69A20D0E8F7008E701C /* AppDelegate.swift in Sources */,
 				A0B5D6AC20D0EAF1008E701C /* OptionsViewController.swift in Sources */,
 				A0B5D6B420D0F0B7008E701C /* ArithmeticViewController.swift in Sources */,
@@ -352,6 +376,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLFV6FC582;
 				INFOPLIST_FILE = mathapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aarnavram.mathapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -368,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLFV6FC582;
 				INFOPLIST_FILE = mathapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aarnavram.mathapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
