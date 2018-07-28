@@ -6,5 +6,6 @@ target 'mathapp' do
   use_frameworks!
 
   # Pods for mathapp
+  pod 'M13Checkbox'
 
 end

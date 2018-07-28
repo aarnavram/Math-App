@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import M13Checkbox
+
 
 class ArithmeticViewController: UIViewController {
     
@@ -19,10 +21,12 @@ class ArithmeticViewController: UIViewController {
     //configuring the colors and other needs for the lines to draw
     var lastPoint = CGPoint.zero
     var lastPoint2 = CGPoint.zero
+    var pointInBox1 = false
+    var pointInBox2 = false
     var red: CGFloat = 0.0
     var green: CGFloat = 0.0
     var blue: CGFloat = 0.0
-    var brushWidth: CGFloat = 10
+    var brushWidth: CGFloat = 12
     var opacity: CGFloat = 1.0
     var swiped = false
     var swiped2 = false
@@ -49,9 +53,14 @@ class ArithmeticViewController: UIViewController {
     let answerLabel = UILabel()
     let answerLabel2 = UILabel()
     let resetButton = UIButton()
+    let checkbox = M13Checkbox()
+
     
     public override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
+        
+        
+        
         
         let image2 = UIImage(named: "blank")!
         tempImageView = UIImageView(image: image2)
@@ -70,7 +79,13 @@ class ArithmeticViewController: UIViewController {
         checkButton.layer.cornerRadius = 20
         resetButton.frame = CGRect(x: self.view.bounds.width/2 - 50, y:520, width: 100, height: 50)
         resetButton.layer.cornerRadius = 20
+        checkbox.layer.frame = CGRect(x: self.view.bounds.width/2 - 25, y: 580, width: 50, height: 50)
         
+        checkbox.markType = .checkmark
+        checkbox.setCheckState(.mixed, animated: false)
+        checkbox.stateChangeAnimation = .expand(.fill)
+        checkbox.tintColor = UIColor.gray
+        self.view.addSubview(checkbox)
         
         label.text = "What is"
         label.font = UIFont(name: "Avenir-Heavy", size: 25.0)
@@ -149,10 +164,27 @@ class ArithmeticViewController: UIViewController {
         swiped2 = true
         if let touch = touches.first {
             let currentPoint = touch.location(in: tempImageView!)
+            let width1 = tempImageView!.bounds.width
+            let height1 = tempImageView!.bounds.height
+            let x1 = currentPoint.x
+            let y1 = currentPoint.y
+            if x1 <= width1 && x1 >= 0 && y1 <= height1 && y1 >= 0 {
+                pointInBox1 = true
+            }
+            print(pointInBox1)
             drawLine(fromPoint: lastPoint, toPoint: currentPoint)
             lastPoint = currentPoint
             
+            
             let currentPoint2 = touch.location(in: tempImageViewTwo!)
+            let width2 = tempImageViewTwo!.bounds.width
+            let height2 = tempImageViewTwo!.bounds.height
+            let x2 = currentPoint2.x
+            let y2 = currentPoint2.y
+            if x2 <= width2 && x2 >= 0 && y2 <= height2 && y2 >= 0 {
+                pointInBox2 = true
+            }
+            print(pointInBox2)
             drawLineTwo(fromPoint: lastPoint2, toPoint: currentPoint2)
             lastPoint2 = currentPoint2
         }
@@ -237,6 +269,16 @@ class ArithmeticViewController: UIViewController {
         answerLabel.text = "You answered \(finalString)"
         answerLabel2.text = "The answer is \(answer)"
         
+        //remove later
+        if finalString==String(answer) {
+            checkbox.tintColor = UIColor.green
+            checkbox.setCheckState(.checked, animated: false)
+            
+        } else {
+            checkbox.setCheckState(.mixed, animated: false)
+            checkbox.tintColor = UIColor.red
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let image2 = UIImage(named: "blank")!
             self.mainImageView!.image = nil
@@ -245,6 +287,8 @@ class ArithmeticViewController: UIViewController {
             self.mainImageViewTwo!.image = image2
             self.answer = 100 //reset to 3 digits
             self.generateQuestion()
+            self.pointInBox1 = false
+            self.pointInBox2 = false
         }
         
         
@@ -259,6 +303,8 @@ class ArithmeticViewController: UIViewController {
         mainImageViewTwo!.image = image2
         answer = 100
         generateQuestion()
+        self.pointInBox1 = false
+        self.pointInBox2 = false
         
     }
     
@@ -278,6 +324,8 @@ class ArithmeticViewController: UIViewController {
         default:
             break
         }
+        checkbox.tintColor = UIColor.gray
+        checkbox.setCheckState(.mixed, animated: false)
     }
     
     func generateRandomQuestion() {
