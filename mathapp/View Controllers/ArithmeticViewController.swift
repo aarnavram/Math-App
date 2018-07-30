@@ -17,6 +17,10 @@ class ArithmeticViewController: UIViewController {
     @IBOutlet weak var numberBoxStackView: UIStackView!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var mainImageViewTwo: UIImageView!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var buttonStackView: UIStackView!
     
     //configuring the colors and other needs for the lines to draw
     var lastPoint = CGPoint.zero
@@ -31,10 +35,23 @@ class ArithmeticViewController: UIViewController {
     var swiped = false
     var swiped2 = false
     var answer = 100
+    var tempImageView : UIImageView?
+    var tempImageViewTwo : UIImageView?
+    let checkbox = M13Checkbox() //adding this to storyboard messes up storyboard layout, hence programatically
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let image2 = UIImage(named: "blank")!
+        tempImageView = UIImageView(image: image2)
+        tempImageViewTwo = UIImageView(image: image2)
+        tempImageView!.translatesAutoresizingMaskIntoConstraints = false
+        tempImageViewTwo!.translatesAutoresizingMaskIntoConstraints = false
+        checkbox.isUserInteractionEnabled = false
+        view.addSubview(checkbox)
+        view.addSubview(tempImageView!)
+        view.addSubview(tempImageViewTwo!)
+        view.bringSubview(toFront: tempImageView!)
+        view.bringSubview(toFront: tempImageViewTwo!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,110 +60,30 @@ class ArithmeticViewController: UIViewController {
     }
     
     
-    var tempImageView : UIImageView?
-    var tempImageViewTwo : UIImageView?
     
-    //TODO: delete these once you make the actual connections from storyboard with constraints
-    let label = UILabel()
-    let questionLabel = UILabel()
-    let checkButton = UIButton()
-    let answerLabel = UILabel()
-    let answerLabel2 = UILabel()
-    let resetButton = UIButton()
-    let checkbox = M13Checkbox()
-
     
     public override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        
-        
-        
-        
-        let image2 = UIImage(named: "blank")!
-        tempImageView = UIImageView(image: image2)
-        tempImageViewTwo = UIImageView(image: image2)
-        tempImageView!.translatesAutoresizingMaskIntoConstraints = false
-        tempImageViewTwo!.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        
-        //delete these soon
-        label.frame = CGRect(x: self.view.bounds.width/2 - 75, y: 50, width: 150, height: 50)
-        questionLabel.frame = CGRect(x: self.view.bounds.width/2 - 75, y: 100, width: 150, height: 50)
-        answerLabel.frame = CGRect(x: self.view.bounds.width/2 - 75, y: 340, width: 150, height: 50)
-        answerLabel2.frame = CGRect(x: self.view.bounds.width/2 - 75, y: 400, width: 150, height: 50)
-        checkButton.frame = CGRect(x: self.view.bounds.width/2 - 50, y:460, width: 100, height: 50)
-        checkButton.layer.cornerRadius = 20
-        resetButton.frame = CGRect(x: self.view.bounds.width/2 - 50, y:520, width: 100, height: 50)
-        resetButton.layer.cornerRadius = 20
-        checkbox.layer.frame = CGRect(x: self.view.bounds.width/2 - 25, y: 580, width: 50, height: 50)
-        
-        checkbox.markType = .checkmark
-        checkbox.setCheckState(.mixed, animated: false)
-        checkbox.stateChangeAnimation = .expand(.fill)
-        checkbox.tintColor = UIColor.gray
-        self.view.addSubview(checkbox)
-        
-        label.text = "What is"
-        label.font = UIFont(name: "Avenir-Heavy", size: 25.0)
-        label.textAlignment = .center
-        view.addSubview(label)
-        view.bringSubview(toFront: label)
-        
-        
-        answerLabel.font = UIFont(name: "Avenir-Heavy", size: 18.0)
-        answerLabel.text = "You answered __"
-        answerLabel.textAlignment = .center
-        view.addSubview(answerLabel)
-        view.bringSubview(toFront: answerLabel)
-        
-        answerLabel2.font = UIFont(name: "Avenir-Heavy", size: 18.0)
-        answerLabel2.textAlignment = .center
-        answerLabel2.text = "The answer is __"
-        view.addSubview(answerLabel2)
-        view.bringSubview(toFront: answerLabel2)
-        
-        
+        turnOffCheckButton()
         generateQuestion()
-        questionLabel.font = UIFont(name: "Avenir-Heavy", size: 22.0)
-        questionLabel.textAlignment = .center
-        view.addSubview(questionLabel)
-        view.bringSubview(toFront: questionLabel)
-        
-        checkButton.setTitle("Check", for: .normal)
-        checkButton.setTitleColor(UIColor.white, for: .normal)
-        checkButton.addTarget(self, action: #selector(check(_:)), for: .touchUpInside)
-        checkButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 25.0)
-        checkButton.backgroundColor = UIColor.black
-        view.addSubview(checkButton)
-        view.bringSubview(toFront: checkButton)
-        
-        
-        resetButton.setTitle("Next", for: .normal)
-        resetButton.setTitleColor(UIColor.white, for: .normal)
-        resetButton.addTarget(self, action: #selector(reset), for: .touchUpInside)
-        resetButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 25.0)
-        resetButton.backgroundColor = UIColor.black
-        view.addSubview(resetButton)
-        view.bringSubview(toFront: resetButton)
-        // marks the end of what I will need to delete ocne I have made the proper views
-        
-        
-        view.addSubview(tempImageView!)
-        view.addSubview(tempImageViewTwo!)
-        
         alignImageViews()
-
-        
-        view.bringSubview(toFront: tempImageView!)
-        view.bringSubview(toFront: tempImageViewTwo!)
-        
-
-        
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        checkButton.layer.cornerRadius = checkButton.bounds.height/2
+        checkButton.clipsToBounds = true
+        resetButton.layer.cornerRadius = checkButton.bounds.height/2
+        resetButton.clipsToBounds = true
+        questionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height/15)
+        
+        //special alignment situations for Checkbox
+        print(UIDevice.current.orientation)
+        if UIDevice.current.orientation.isLandscape {
+            alignCheckBoxLandscape()
+        } else {
+            alignCheckBoxPortrait()
+        }
         alignImageViews()
     }
     
@@ -156,6 +93,9 @@ class ArithmeticViewController: UIViewController {
         if let touch = touches.first {
             lastPoint = touch.location(in: tempImageView!)
             lastPoint2 = touch.location(in: tempImageViewTwo!)
+        }
+        if (pointInBox1 && pointInBox2) {
+            turnOnCheckButton()
         }
     }
     
@@ -171,7 +111,6 @@ class ArithmeticViewController: UIViewController {
             if x1 <= width1 && x1 >= 0 && y1 <= height1 && y1 >= 0 {
                 pointInBox1 = true
             }
-            print(pointInBox1)
             drawLine(fromPoint: lastPoint, toPoint: currentPoint)
             lastPoint = currentPoint
             
@@ -184,9 +123,11 @@ class ArithmeticViewController: UIViewController {
             if x2 <= width2 && x2 >= 0 && y2 <= height2 && y2 >= 0 {
                 pointInBox2 = true
             }
-            print(pointInBox2)
             drawLineTwo(fromPoint: lastPoint2, toPoint: currentPoint2)
             lastPoint2 = currentPoint2
+        }
+        if (pointInBox1 && pointInBox2) {
+            turnOnCheckButton()
         }
     }
     
@@ -211,7 +152,9 @@ class ArithmeticViewController: UIViewController {
         mainImageViewTwo!.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         tempImageViewTwo!.image = nil
-        
+        if (pointInBox1 && pointInBox2) {
+            turnOnCheckButton()
+        }
     }
     
     func drawLine(fromPoint: CGPoint, toPoint: CGPoint) {
@@ -258,26 +201,25 @@ class ArithmeticViewController: UIViewController {
         
     }
     
-    @objc func check(_ sender: UIButton) {
+    @IBAction func onCheckButtonPressed(_ sender: Any) {
+        
         var finalString = ""
         MNISTClient.sharedInstance.predict(mainImageView!.image!)
         finalString = MNISTClient.digit!
         MNISTClient.sharedInstance.predict(mainImageViewTwo!.image!)
         finalString = finalString + MNISTClient.digit!
-        
-        
-        answerLabel.text = "You answered \(finalString)"
-        answerLabel2.text = "The answer is \(answer)"
-        
+        questionLabel.text = "\(answer)"
         //remove later
         if finalString==String(answer) {
-            checkbox.tintColor = UIColor.green
+            checkbox.tintColor = UIColor.init(red: 91/255, green: 217/255, blue: 153/255, alpha: 1) //greenish
             checkbox.setCheckState(.checked, animated: false)
             
         } else {
+            checkbox.tintColor = UIColor.init(red: 236/255, green: 100/255, blue: 75/255, alpha: 1) //redish
             checkbox.setCheckState(.mixed, animated: false)
-            checkbox.tintColor = UIColor.red
         }
+        
+        turnOffCheckButton()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let image2 = UIImage(named: "blank")!
@@ -292,10 +234,9 @@ class ArithmeticViewController: UIViewController {
         }
         
         
-        
     }
     
-    @objc func reset() {
+    @IBAction func onResetPressed(_ sender: Any) {
         let image2 = UIImage(named: "blank")!
         mainImageView!.image = nil
         mainImageViewTwo!.image = nil
@@ -305,7 +246,7 @@ class ArithmeticViewController: UIViewController {
         generateQuestion()
         self.pointInBox1 = false
         self.pointInBox2 = false
-        
+        turnOffCheckButton()
     }
     
     func generateQuestion() {
@@ -325,6 +266,7 @@ class ArithmeticViewController: UIViewController {
             break
         }
         checkbox.tintColor = UIColor.gray
+        checkbox.stateChangeAnimation = .expand(.fill)
         checkbox.setCheckState(.mixed, animated: false)
     }
     
@@ -355,8 +297,6 @@ class ArithmeticViewController: UIViewController {
             answer = (first > second) ? Int(first - second) : Int(second - first)
         }
         questionLabel.text = (first > second) ? "\(first) - \(second)" : "\(second) - \(first)"
-        answerLabel2.text = "The answer is __"
-        answerLabel.text = "You answered __"
     }
     
     func generateMultiplicationQuestion() {
@@ -368,8 +308,6 @@ class ArithmeticViewController: UIViewController {
             answer = Int(first * second)
         }
         questionLabel.text = "\(first) x \(second)"
-        answerLabel2.text = "The answer is __"
-        answerLabel.text = "You answered __"
     }
     
     func generateAdditionQuestion() {
@@ -381,8 +319,6 @@ class ArithmeticViewController: UIViewController {
             answer = Int(first + second)
         }
         questionLabel.text = "\(first) + \(second)"
-        answerLabel2.text = "The answer is __"
-        answerLabel.text = "You answered __"
         
     }
     
@@ -397,15 +333,35 @@ class ArithmeticViewController: UIViewController {
         NSLayoutConstraint.init(item: tempImageViewTwo!, attribute: .height, relatedBy: .equal, toItem: mainImageViewTwo, attribute: .height, multiplier: 1, constant: 0).isActive = true
     }
     
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func turnOffCheckButton() {
+        checkButton.backgroundColor = UIColor.lightGray
+        checkButton.setTitleColor(UIColor.darkGray, for: .normal)
+        checkButton.isUserInteractionEnabled = true
     }
-    */
+    
+    func turnOnCheckButton() {
+        checkButton.backgroundColor = UIColor.black
+        checkButton.setTitleColor(UIColor.white, for: .normal)
+        checkButton.isUserInteractionEnabled = true
+    }
+    
+    func alignCheckBoxPortrait() {
+        checkbox.layer.frame = CGRect(x: self.view.bounds.width/2 - 37, y: buttonStackView.frame.maxY + 20, width: 75, height: 75)
+        checkbox.markType = .checkmark
+        //checkbox.setCheckState(.mixed, animated: false)
+        //checkbox.stateChangeAnimation = .expand(.fill)
+        //checkbox.tintColor = UIColor.gray
+    }
+    
+    func alignCheckBoxLandscape() {
+        let widthToRight = (UIScreen.main.bounds.width - numberBoxStackView.frame.maxX)
+        let middleHeight = numberBoxStackView.frame.minY + (numberBoxStackView.frame.maxY - numberBoxStackView.frame.minY)/2
+        let middlePoint = CGPoint(x: numberBoxStackView.frame.maxX + widthToRight/2, y: middleHeight)
+        checkbox.layer.frame = CGRect(x: middlePoint.x - 37, y: middlePoint.y - 37, width: 75, height: 75)
+        //checkbox.markType = .checkmark
+        //checkbox.setCheckState(.mixed, animated: false)
+        //checkbox.stateChangeAnimation = .expand(.fill)
+        //checkbox.tintColor = UIColor.gray
+    }
+    
 }

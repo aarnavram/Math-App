@@ -52,20 +52,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmP-If-Zku">
-                                <rect key="frame" x="4" y="68" width="367" height="33.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I77-Er-yn6">
-                                <rect key="frame" x="4" y="101.5" width="367" height="33"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuestionLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I77-Er-yn6">
+                                <rect key="frame" x="4" y="72" width="367" height="66.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WzV-w6-FKS" userLabel="Image Stack View">
-                                <rect key="frame" x="30" y="138.5" width="315" height="150.5"/>
+                                <rect key="frame" x="30" y="146.5" width="315" height="150.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank" translatesAutoresizingMaskIntoConstraints="NO" id="5Zg-ex-hVo" userLabel="left">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150.5"/>
@@ -82,21 +76,47 @@
                                     <constraint firstItem="5Zg-ex-hVo" firstAttribute="leading" secondItem="WzV-w6-FKS" secondAttribute="leading" id="rPv-Gx-yFB"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="K9A-ng-BPr" userLabel="Button Stack View">
+                                <rect key="frame" x="112.5" y="317" width="150" height="87"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Le-3h-qyP">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Check">
+                                            <color key="titleColor" red="0.99329897590000005" green="0.99772134509999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onCheckButtonPressed:" destination="XbT-9E-zBO" eventType="touchUpInside" id="VgZ-8m-Kid"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qx8-cv-6Px">
+                                        <rect key="frame" x="0.0" y="51" width="150" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" red="0.99329897590000005" green="0.99772134509999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onResetPressed:" destination="XbT-9E-zBO" eventType="touchUpInside" id="Max-tJ-jBA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WzV-w6-FKS" firstAttribute="width" secondItem="ItK-lJ-F4s" secondAttribute="width" multiplier="0.5" constant="-15" id="4gF-Do-Z2E"/>
-                            <constraint firstItem="I77-Er-yn6" firstAttribute="height" secondItem="jdr-tt-qHB" secondAttribute="height" multiplier="0.05" id="7ND-QV-HE0"/>
+                            <constraint firstItem="K9A-ng-BPr" firstAttribute="centerX" secondItem="ItK-lJ-F4s" secondAttribute="centerX" id="61a-Nq-6AW"/>
+                            <constraint firstItem="I77-Er-yn6" firstAttribute="height" secondItem="jdr-tt-qHB" secondAttribute="height" multiplier="0.1" id="7ND-QV-HE0"/>
                             <constraint firstItem="ItK-lJ-F4s" firstAttribute="trailing" secondItem="I77-Er-yn6" secondAttribute="trailing" constant="4" id="Acs-ba-Cna"/>
+                            <constraint firstItem="K9A-ng-BPr" firstAttribute="top" secondItem="WzV-w6-FKS" secondAttribute="bottom" constant="20" id="BvG-Xj-VSf"/>
+                            <constraint firstItem="2Le-3h-qyP" firstAttribute="width" secondItem="5Zg-ex-hVo" secondAttribute="width" id="DnA-l6-65Q"/>
                             <constraint firstItem="WzV-w6-FKS" firstAttribute="width" secondItem="ItK-lJ-F4s" secondAttribute="width" multiplier="0.75" constant="-15" id="GAf-om-irr"/>
-                            <constraint firstItem="ItK-lJ-F4s" firstAttribute="trailing" secondItem="QmP-If-Zku" secondAttribute="trailing" constant="4" id="HPk-zN-XMj"/>
-                            <constraint firstItem="I77-Er-yn6" firstAttribute="top" secondItem="QmP-If-Zku" secondAttribute="bottom" id="Idn-xN-RZM"/>
-                            <constraint firstItem="QmP-If-Zku" firstAttribute="height" secondItem="jdr-tt-qHB" secondAttribute="height" multiplier="0.05" id="MAu-bT-7wi"/>
-                            <constraint firstItem="QmP-If-Zku" firstAttribute="leading" secondItem="ItK-lJ-F4s" secondAttribute="leading" constant="4" id="N2x-l7-bGb"/>
-                            <constraint firstItem="WzV-w6-FKS" firstAttribute="top" secondItem="I77-Er-yn6" secondAttribute="bottom" constant="4" id="Rak-hl-fzQ"/>
+                            <constraint firstItem="WzV-w6-FKS" firstAttribute="top" secondItem="I77-Er-yn6" secondAttribute="bottom" constant="8" id="Rak-hl-fzQ"/>
+                            <constraint firstItem="K9A-ng-BPr" firstAttribute="width" secondItem="5Zg-ex-hVo" secondAttribute="width" id="UCv-tM-815"/>
                             <constraint firstItem="I77-Er-yn6" firstAttribute="leading" secondItem="ItK-lJ-F4s" secondAttribute="leading" constant="4" id="bss-Le-yhy"/>
-                            <constraint firstItem="QmP-If-Zku" firstAttribute="top" secondItem="ItK-lJ-F4s" secondAttribute="top" constant="4" id="cLI-e8-NhN"/>
-                            <constraint firstItem="QmP-If-Zku" firstAttribute="centerX" secondItem="jdr-tt-qHB" secondAttribute="centerX" id="iN4-DC-u4d"/>
+                            <constraint firstItem="I77-Er-yn6" firstAttribute="top" secondItem="ItK-lJ-F4s" secondAttribute="top" constant="8" id="gO1-mJ-AFh"/>
                             <constraint firstItem="WzV-w6-FKS" firstAttribute="centerX" secondItem="ItK-lJ-F4s" secondAttribute="centerX" id="yy2-Lx-1Jb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ItK-lJ-F4s"/>
@@ -119,9 +139,13 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="buttonStackView" destination="K9A-ng-BPr" id="aGv-PY-Wn3"/>
+                        <outlet property="checkButton" destination="2Le-3h-qyP" id="fpq-Yq-dad"/>
                         <outlet property="mainImageView" destination="5Zg-ex-hVo" id="FUr-0J-vzb"/>
                         <outlet property="mainImageViewTwo" destination="AlN-0m-gDA" id="6E9-T8-gGU"/>
                         <outlet property="numberBoxStackView" destination="WzV-w6-FKS" id="LNt-28-Hbx"/>
+                        <outlet property="questionLabel" destination="I77-Er-yn6" id="bC3-bu-qMH"/>
+                        <outlet property="resetButton" destination="qx8-cv-6Px" id="mnu-TO-aGa"/>
                         <segue destination="e9B-ky-ZHt" kind="unwind" identifier="unwindToOptionsFromArithmetic" unwindAction="unwindFromArithmeticVCWithSegue:" id="BwY-M7-1rU"/>
                     </connections>
                 </viewController>
