@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WsW-gb-z66">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina5_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,28 +17,61 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="OptionsViewController" customModule="mathapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-hJ-dCd">
-                                <rect key="frame" x="164" y="391" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="OnNextPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WTn-8c-6ER"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Jyf-yg-re9">
+                                <rect key="frame" x="377.66666666666669" y="52" width="56.666666666666686" height="282"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJW-jS-BVQ" userLabel="add">
+                                        <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="bJW-jS-BVQ" secondAttribute="height" multiplier="1:1" id="IIr-a3-Xen"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="add"/>
+                                        <connections>
+                                            <segue destination="XbT-9E-zBO" kind="show" identifier="toAdd" id="ypi-y5-GAw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Via-BL-3Nc" userLabel="multiply">
+                                        <rect key="frame" x="0.0" y="75" width="56.666666666666664" height="56.666666666666657"/>
+                                        <state key="normal" title="Button" image="multiply"/>
+                                        <connections>
+                                            <segue destination="XbT-9E-zBO" kind="show" identifier="toMultiply" id="CWD-CT-a8V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnU-G4-BTB" userLabel="subtract">
+                                        <rect key="frame" x="0.0" y="150.33333333333334" width="56.666666666666664" height="56.666666666666657"/>
+                                        <state key="normal" title="Button" image="minus"/>
+                                        <connections>
+                                            <segue destination="XbT-9E-zBO" kind="show" identifier="toSubtract" id="afj-JK-Lzd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28Q-6m-Pbl" userLabel="random">
+                                        <rect key="frame" x="0.0" y="226" width="56.666666666666664" height="56"/>
+                                        <state key="normal" title="Button" image="all"/>
+                                        <connections>
+                                            <segue destination="XbT-9E-zBO" kind="show" identifier="toRandom" id="XvC-qU-fCN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="28Q-6m-Pbl" firstAttribute="height" secondItem="Jyf-yg-re9" secondAttribute="height" multiplier="0.2" id="D8E-Vj-43P"/>
+                                    <constraint firstItem="bJW-jS-BVQ" firstAttribute="height" secondItem="Jyf-yg-re9" secondAttribute="height" multiplier="0.2" id="NUY-Hv-a7E"/>
+                                    <constraint firstItem="Via-BL-3Nc" firstAttribute="height" secondItem="Jyf-yg-re9" secondAttribute="height" multiplier="0.2" id="b5j-ta-2Sg"/>
+                                    <constraint firstItem="nnU-G4-BTB" firstAttribute="height" secondItem="Jyf-yg-re9" secondAttribute="height" multiplier="0.2" id="pDe-W4-Qxx"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cjS-hJ-dCd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b9k-6O-bGv"/>
-                            <constraint firstItem="cjS-hJ-dCd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nYN-I2-k0Z"/>
+                            <constraint firstItem="Jyf-yg-re9" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" constant="-40" id="PjI-MC-ZRp"/>
+                            <constraint firstItem="Jyf-yg-re9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="kNd-bR-mqZ"/>
+                            <constraint firstItem="Jyf-yg-re9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rnc-ld-gIL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="41i-IW-9vC"/>
-                    <connections>
-                        <segue destination="XbT-9E-zBO" kind="show" identifier="toMultiply" id="Du1-9e-yna"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,27 +82,27 @@
             <objects>
                 <viewController id="XbT-9E-zBO" customClass="ArithmeticViewController" customModule="mathapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jdr-tt-qHB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuestionLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I77-Er-yn6">
-                                <rect key="frame" x="4" y="96" width="367" height="81.333333333333314"/>
+                                <rect key="frame" x="48" y="40" width="716" height="37.666666666666657"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WzV-w6-FKS" userLabel="Image Stack View">
-                                <rect key="frame" x="30" y="185.33333333333337" width="315" height="150"/>
+                                <rect key="frame" x="232.66666666666663" y="85.666666666666686" width="347" height="166"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank" translatesAutoresizingMaskIntoConstraints="NO" id="5Zg-ex-hVo" userLabel="left">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5Zg-ex-hVo" secondAttribute="height" multiplier="1:1" id="AaL-oa-SZe"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank" translatesAutoresizingMaskIntoConstraints="NO" id="AlN-0m-gDA" userLabel="right">
-                                        <rect key="frame" x="165" y="0.0" width="150" height="150"/>
+                                        <rect key="frame" x="181" y="0.0" width="166" height="166"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -77,10 +110,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="K9A-ng-BPr" userLabel="Button Stack View">
-                                <rect key="frame" x="112.66666666666669" y="355.33333333333331" width="150" height="87"/>
+                                <rect key="frame" x="323" y="271.66666666666669" width="166" height="87"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Le-3h-qyP">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="36"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Check">
@@ -91,7 +124,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qx8-cv-6Px">
-                                        <rect key="frame" x="0.0" y="51" width="150" height="36"/>
+                                        <rect key="frame" x="0.0" y="51" width="166" height="36"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Reset">
@@ -173,7 +206,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WsW-gb-z66" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JPy-L5-cJt">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="812" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -187,6 +220,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="600" height="600"/>
+        <image name="all" width="600" height="600"/>
         <image name="blank" width="150" height="150"/>
+        <image name="minus" width="600" height="600"/>
+        <image name="multiply" width="604" height="604"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XvC-qU-fCN"/>
+    </inferredMetricsTieBreakers>
 </document>

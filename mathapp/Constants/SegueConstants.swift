@@ -8,6 +8,10 @@
 //Makes sure to avoid typos in other places
 struct SegueIdentifier {
     static let multiply = "toMultiply"
+    static let add = "toAdd"
+    static let subtract = "toSubtract"
+    static let random = "toRandom"
     static let unwindToOptionsFromArithmetic = "unwindToOptionsFromArithmetic"
+    
 }
 

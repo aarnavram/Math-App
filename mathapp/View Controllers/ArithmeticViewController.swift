@@ -38,6 +38,7 @@ class ArithmeticViewController: UIViewController {
     var tempImageView : UIImageView?
     var tempImageViewTwo : UIImageView?
     let checkbox = M13Checkbox() //adding this to storyboard messes up storyboard layout, hence programatically
+    var drawingAllowed = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,72 +88,78 @@ class ArithmeticViewController: UIViewController {
     }
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = false
-        tempImageView!.image = nil
-        if let touch = touches.first {
-            lastPoint = touch.location(in: tempImageView!)
-            lastPoint2 = touch.location(in: tempImageViewTwo!)
-        }
-        if (pointInBox1 && pointInBox2) {
-            turnOnCheckButton()
+        if drawingAllowed {
+            swiped = false
+            tempImageView!.image = nil
+            if let touch = touches.first {
+                lastPoint = touch.location(in: tempImageView!)
+                lastPoint2 = touch.location(in: tempImageViewTwo!)
+            }
+            if (pointInBox1 && pointInBox2) {
+                turnOnCheckButton()
+            }
         }
     }
     
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = true
-        swiped2 = true
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: tempImageView!)
-            let width1 = tempImageView!.bounds.width
-            let height1 = tempImageView!.bounds.height
-            let x1 = currentPoint.x
-            let y1 = currentPoint.y
-            if x1 <= width1 && x1 >= 0 && y1 <= height1 && y1 >= 0 {
-                pointInBox1 = true
+        if drawingAllowed {
+            swiped = true
+            swiped2 = true
+            if let touch = touches.first {
+                let currentPoint = touch.location(in: tempImageView!)
+                let width1 = tempImageView!.bounds.width
+                let height1 = tempImageView!.bounds.height
+                let x1 = currentPoint.x
+                let y1 = currentPoint.y
+                if x1 <= width1 && x1 >= 0 && y1 <= height1 && y1 >= 0 {
+                    pointInBox1 = true
+                }
+                drawLine(fromPoint: lastPoint, toPoint: currentPoint)
+                lastPoint = currentPoint
+                
+                
+                let currentPoint2 = touch.location(in: tempImageViewTwo!)
+                let width2 = tempImageViewTwo!.bounds.width
+                let height2 = tempImageViewTwo!.bounds.height
+                let x2 = currentPoint2.x
+                let y2 = currentPoint2.y
+                if x2 <= width2 && x2 >= 0 && y2 <= height2 && y2 >= 0 {
+                    pointInBox2 = true
+                }
+                drawLineTwo(fromPoint: lastPoint2, toPoint: currentPoint2)
+                lastPoint2 = currentPoint2
             }
-            drawLine(fromPoint: lastPoint, toPoint: currentPoint)
-            lastPoint = currentPoint
-            
-            
-            let currentPoint2 = touch.location(in: tempImageViewTwo!)
-            let width2 = tempImageViewTwo!.bounds.width
-            let height2 = tempImageViewTwo!.bounds.height
-            let x2 = currentPoint2.x
-            let y2 = currentPoint2.y
-            if x2 <= width2 && x2 >= 0 && y2 <= height2 && y2 >= 0 {
-                pointInBox2 = true
+            if (pointInBox1 && pointInBox2) {
+                turnOnCheckButton()
             }
-            drawLineTwo(fromPoint: lastPoint2, toPoint: currentPoint2)
-            lastPoint2 = currentPoint2
-        }
-        if (pointInBox1 && pointInBox2) {
-            turnOnCheckButton()
         }
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if swiped == false {
-            drawLine(fromPoint: lastPoint, toPoint: lastPoint)
-        }
-        if swiped2 == false {
-            drawLineTwo(fromPoint: lastPoint2, toPoint: lastPoint2)
-        }
-        
-        UIGraphicsBeginImageContext(mainImageView!.frame.size)
-        mainImageView!.image?.draw(in: CGRect(x: 0, y: 0, width: mainImageView!.frame.size.width, height: mainImageView!.frame.size.height))
-        tempImageView!.image?.draw(in: CGRect(x: 0, y: 0, width: tempImageView!.frame.size.width, height: tempImageView!.frame.size.height), blendMode: .normal, alpha: opacity)
-        mainImageView!.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        tempImageView!.image = nil
-        
-        UIGraphicsBeginImageContext(mainImageViewTwo!.frame.size)
-        mainImageViewTwo!.image?.draw(in: CGRect(x: 0, y: 0, width: mainImageViewTwo!.frame.size.width, height: mainImageViewTwo!.frame.size.height))
-        tempImageViewTwo!.image?.draw(in: CGRect(x: 0, y: 0, width: tempImageViewTwo!.frame.size.width, height: tempImageViewTwo!.frame.size.height), blendMode: .normal, alpha: opacity)
-        mainImageViewTwo!.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        tempImageViewTwo!.image = nil
-        if (pointInBox1 && pointInBox2) {
-            turnOnCheckButton()
+        if drawingAllowed {
+            if swiped == false {
+                drawLine(fromPoint: lastPoint, toPoint: lastPoint)
+            }
+            if swiped2 == false {
+                drawLineTwo(fromPoint: lastPoint2, toPoint: lastPoint2)
+            }
+            
+            UIGraphicsBeginImageContext(mainImageView!.frame.size)
+            mainImageView!.image?.draw(in: CGRect(x: 0, y: 0, width: mainImageView!.frame.size.width, height: mainImageView!.frame.size.height))
+            tempImageView!.image?.draw(in: CGRect(x: 0, y: 0, width: tempImageView!.frame.size.width, height: tempImageView!.frame.size.height), blendMode: .normal, alpha: opacity)
+            mainImageView!.image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            tempImageView!.image = nil
+            
+            UIGraphicsBeginImageContext(mainImageViewTwo!.frame.size)
+            mainImageViewTwo!.image?.draw(in: CGRect(x: 0, y: 0, width: mainImageViewTwo!.frame.size.width, height: mainImageViewTwo!.frame.size.height))
+            tempImageViewTwo!.image?.draw(in: CGRect(x: 0, y: 0, width: tempImageViewTwo!.frame.size.width, height: tempImageViewTwo!.frame.size.height), blendMode: .normal, alpha: opacity)
+            mainImageViewTwo!.image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            tempImageViewTwo!.image = nil
+            if (pointInBox1 && pointInBox2) {
+                turnOnCheckButton()
+            }
         }
     }
     
@@ -218,6 +225,7 @@ class ArithmeticViewController: UIViewController {
             checkbox.setCheckState(.mixed, animated: false)
         }
         
+        drawingAllowed = false
         turnOffCheckButton()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -230,6 +238,7 @@ class ArithmeticViewController: UIViewController {
             self.generateQuestion()
             self.pointInBox1 = false
             self.pointInBox2 = false
+            self.drawingAllowed = true
         }
         
         
@@ -335,13 +344,25 @@ class ArithmeticViewController: UIViewController {
     func turnOffCheckButton() {
         checkButton.backgroundColor = UIColor.lightGray
         checkButton.setTitleColor(UIColor.darkGray, for: .normal)
-        checkButton.isUserInteractionEnabled = true
+        checkButton.isUserInteractionEnabled = false
+    }
+    
+    func turnOffResetButton() {
+        resetButton.backgroundColor = UIColor.lightGray
+        resetButton.setTitleColor(UIColor.darkGray, for: .normal)
+        resetButton.isUserInteractionEnabled = false
     }
     
     func turnOnCheckButton() {
         checkButton.backgroundColor = UIColor.black
         checkButton.setTitleColor(UIColor.white, for: .normal)
         checkButton.isUserInteractionEnabled = true
+    }
+    
+    func turnOnResetButton() {
+        resetButton.backgroundColor = UIColor.black
+        resetButton.setTitleColor(UIColor.white, for: .normal)
+        resetButton.isUserInteractionEnabled = true
     }
     
     func alignCheckBoxPortrait() {

@@ -34,13 +34,28 @@ class OptionsViewController: UIViewController {
     //depending on the button send the right info to the next VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {return}
-        
-        if identifier == SegueIdentifier.multiply {
+        switch identifier {
+        case SegueIdentifier.add:
+            if let destination = segue.destination as? ArithmeticViewController {
+                destination.function = Function.add
+            }
+        case SegueIdentifier.multiply:
+            if let destination = segue.destination as? ArithmeticViewController {
+                destination.function = Function.multiply
+            }
+        case SegueIdentifier.subtract:
+            if let destination = segue.destination as? ArithmeticViewController {
+                destination.function = Function.subtract
+            }
+        case SegueIdentifier.random:
+            if let destination = segue.destination as? ArithmeticViewController {
+                destination.function = Function.random
+            }
+        default:
             if let destination = segue.destination as? ArithmeticViewController {
                 destination.function = Function.random
             }
         }
-        
     }
 
 }
