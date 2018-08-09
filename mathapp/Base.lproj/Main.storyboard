@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WsW-gb-z66">
-    <device id="ipad10_5" orientation="landscape">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,21 +17,21 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="OptionsViewController" customModule="mathapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCa-mQ-Sa9">
-                                <rect key="frame" x="540" y="402" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-hJ-dCd">
+                                <rect key="frame" x="164" y="391" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="OnNextPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yV1-9x-B6W"/>
+                                    <action selector="OnNextPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WTn-8c-6ER"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="uCa-mQ-Sa9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S7B-zv-UtZ"/>
-                            <constraint firstItem="uCa-mQ-Sa9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yv3-i8-NdL"/>
+                            <constraint firstItem="cjS-hJ-dCd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b9k-6O-bGv"/>
+                            <constraint firstItem="cjS-hJ-dCd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nYN-I2-k0Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -42,34 +42,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335.19999999999999" y="41.829085457271368"/>
+            <point key="canvasLocation" x="335.19999999999999" y="41.379310344827587"/>
         </scene>
         <!--Arithmetic View Controller-->
         <scene sceneID="Kzg-Hx-HZN">
             <objects>
                 <viewController id="XbT-9E-zBO" customClass="ArithmeticViewController" customModule="mathapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jdr-tt-qHB">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QuestionLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I77-Er-yn6">
-                                <rect key="frame" x="4" y="72" width="1104" height="83.5"/>
+                                <rect key="frame" x="4" y="96" width="367" height="81.333333333333314"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WzV-w6-FKS" userLabel="Image Stack View">
-                                <rect key="frame" x="146.5" y="163.5" width="819" height="402"/>
+                                <rect key="frame" x="30" y="185.33333333333337" width="315" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank" translatesAutoresizingMaskIntoConstraints="NO" id="5Zg-ex-hVo" userLabel="left">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="402"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5Zg-ex-hVo" secondAttribute="height" multiplier="1:1" id="AaL-oa-SZe"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank" translatesAutoresizingMaskIntoConstraints="NO" id="AlN-0m-gDA" userLabel="right">
-                                        <rect key="frame" x="417" y="0.0" width="402" height="402"/>
+                                        <rect key="frame" x="165" y="0.0" width="150" height="150"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -77,10 +77,10 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="K9A-ng-BPr" userLabel="Button Stack View">
-                                <rect key="frame" x="355" y="585.5" width="402" height="115"/>
+                                <rect key="frame" x="112.66666666666669" y="355.33333333333331" width="150" height="87"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Le-3h-qyP">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="36"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Check">
@@ -91,7 +91,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qx8-cv-6Px">
-                                        <rect key="frame" x="0.0" y="65" width="402" height="50"/>
+                                        <rect key="frame" x="0.0" y="51" width="150" height="36"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Reset">
@@ -173,7 +173,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WsW-gb-z66" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JPy-L5-cJt">
-                        <rect key="frame" x="0.0" y="20" width="1112" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

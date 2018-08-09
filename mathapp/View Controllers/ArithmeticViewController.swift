@@ -78,7 +78,6 @@ class ArithmeticViewController: UIViewController {
         questionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height/15)
         
         //special alignment situations for Checkbox
-        print(UIDevice.current.orientation)
         if UIDevice.current.orientation.isLandscape {
             alignCheckBoxLandscape()
         } else {
@@ -348,9 +347,6 @@ class ArithmeticViewController: UIViewController {
     func alignCheckBoxPortrait() {
         checkbox.layer.frame = CGRect(x: self.view.bounds.width/2 - 37, y: buttonStackView.frame.maxY + 20, width: 75, height: 75)
         checkbox.markType = .checkmark
-        //checkbox.setCheckState(.mixed, animated: false)
-        //checkbox.stateChangeAnimation = .expand(.fill)
-        //checkbox.tintColor = UIColor.gray
     }
     
     func alignCheckBoxLandscape() {
@@ -358,10 +354,6 @@ class ArithmeticViewController: UIViewController {
         let middleHeight = numberBoxStackView.frame.minY + (numberBoxStackView.frame.maxY - numberBoxStackView.frame.minY)/2
         let middlePoint = CGPoint(x: numberBoxStackView.frame.maxX + widthToRight/2, y: middleHeight)
         checkbox.layer.frame = CGRect(x: middlePoint.x - 37, y: middlePoint.y - 37, width: 75, height: 75)
-        //checkbox.markType = .checkmark
-        //checkbox.setCheckState(.mixed, animated: false)
-        //checkbox.stateChangeAnimation = .expand(.fill)
-        //checkbox.tintColor = UIColor.gray
     }
     
 }

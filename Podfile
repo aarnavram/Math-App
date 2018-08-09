@@ -7,5 +7,4 @@ target 'mathapp' do
 
   # Pods for mathapp
   pod 'M13Checkbox'
-
 end
