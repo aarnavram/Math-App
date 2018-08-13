@@ -39,6 +39,7 @@ class ArithmeticViewController: UIViewController {
     var tempImageViewTwo : UIImageView?
     let checkbox = M13Checkbox() //adding this to storyboard messes up storyboard layout, hence programatically
     var drawingAllowed = true
+    var prevorientation = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +79,7 @@ class ArithmeticViewController: UIViewController {
         resetButton.clipsToBounds = true
         questionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height/15)
         
-        //special alignment situations for Checkbox
-        if UIDevice.current.orientation.isLandscape {
+        if self.view.bounds.size.width > self.view.bounds.height {
             alignCheckBoxLandscape()
         } else {
             alignCheckBoxPortrait()
