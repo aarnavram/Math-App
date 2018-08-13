@@ -21,6 +21,7 @@ class ArithmeticViewController: UIViewController {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak var navBarTitle: UINavigationItem!
     
     //configuring the colors and other needs for the lines to draw
     var lastPoint = CGPoint.zero
@@ -61,11 +62,22 @@ class ArithmeticViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
     public override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
+        if let function = function {
+            switch function {
+                case Function.add:
+                    navBarTitle.title = "Addition"
+                case Function.subtract:
+                    navBarTitle.title = "Subtraction"
+                case Function.multiply:
+                    navBarTitle.title = "Multiplication"
+                case Function.random:
+                    navBarTitle.title = "Random"
+                default:
+                    navBarTitle.title = "Random"
+            }
+        }
         turnOffCheckButton()
         generateQuestion()
         alignImageViews()
@@ -78,7 +90,6 @@ class ArithmeticViewController: UIViewController {
         resetButton.layer.cornerRadius = checkButton.bounds.height/2
         resetButton.clipsToBounds = true
         questionLabel.font = UIFont(name: "HelveticaNeue-Bold", size: UIScreen.main.bounds.height/15)
-        
         if self.view.bounds.size.width > self.view.bounds.height {
             alignCheckBoxLandscape()
         } else {

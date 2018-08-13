@@ -14,8 +14,7 @@ class OptionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.tintColor = UIColor.black
         // Do any additional setup after loading the view.
     }
 
@@ -24,12 +23,13 @@ class OptionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    //debug button purposes to just move to next screen
-    @IBAction func OnNextPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: SegueIdentifier.multiply, sender: self)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let controller = self.navigationController {
+            controller.navigationItem.title = "Math 4 Kids"
+        }
     }
-    
     
     //depending on the button send the right info to the next VC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

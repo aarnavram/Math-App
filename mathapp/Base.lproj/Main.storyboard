@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Options View Controller-->
+        <!--Math 4 Kids-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="OptionsViewController" customModule="mathapp" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,7 +117,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="41i-IW-9vC"/>
+                    <navigationItem key="navigationItem" title="Math 4 Kids" id="41i-IW-9vC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -230,11 +230,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="Abo-9d-BwA"/>
                     <connections>
                         <outlet property="buttonStackView" destination="K9A-ng-BPr" id="aGv-PY-Wn3"/>
                         <outlet property="checkButton" destination="2Le-3h-qyP" id="fpq-Yq-dad"/>
                         <outlet property="mainImageView" destination="5Zg-ex-hVo" id="FUr-0J-vzb"/>
                         <outlet property="mainImageViewTwo" destination="AlN-0m-gDA" id="6E9-T8-gGU"/>
+                        <outlet property="navBarTitle" destination="Abo-9d-BwA" id="pL8-py-srT"/>
                         <outlet property="numberBoxStackView" destination="WzV-w6-FKS" id="LNt-28-Hbx"/>
                         <outlet property="questionLabel" destination="I77-Er-yn6" id="bC3-bu-qMH"/>
                         <outlet property="resetButton" destination="qx8-cv-6Px" id="mnu-TO-aGa"/>
