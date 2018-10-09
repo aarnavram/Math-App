@@ -102,9 +102,12 @@ class ArithmeticViewController: UIViewController {
         if drawingAllowed {
             swiped = false
             tempImageView!.image = nil
+            tempImageViewTwo!.image = nil
             if let touch = touches.first {
                 lastPoint = touch.location(in: tempImageView!)
                 lastPoint2 = touch.location(in: tempImageViewTwo!)
+                print(tempImageView?.bounds.width)
+                print(lastPoint)
             }
             if (pointInBox1 && pointInBox2) {
                 turnOnCheckButton()
@@ -184,6 +187,7 @@ class ArithmeticViewController: UIViewController {
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
         context?.setLineCap(.round)
+        brushWidth = UIDevice.current.userInterfaceIdiom == .pad ? 25:12
         context?.setLineWidth(brushWidth)
         context?.setStrokeColor(UIColor.white.cgColor)
         context?.setBlendMode(.normal)
@@ -206,6 +210,7 @@ class ArithmeticViewController: UIViewController {
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
         context?.setLineCap(.round)
+        brushWidth = UIDevice.current.userInterfaceIdiom == .pad ? 25:12
         context?.setLineWidth(brushWidth)
         context?.setStrokeColor(UIColor.white.cgColor)
         context?.setBlendMode(.normal)
@@ -342,6 +347,8 @@ class ArithmeticViewController: UIViewController {
     }
     
     func alignImageViews() {
+        //self.view.addSubview(numberBoxStackView)
+        //NSLayoutConstraint.init(item: numberBoxStackView, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 0.75, constant: 1).isActive = true
         NSLayoutConstraint.init(item: tempImageView!, attribute: .width, relatedBy: .equal, toItem: mainImageView, attribute: .width, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint.init(item: tempImageView!, attribute: .leading, relatedBy: .equal, toItem: mainImageView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
         NSLayoutConstraint.init(item: tempImageView!, attribute: .top, relatedBy: .equal, toItem: mainImageView, attribute: .top, multiplier: 1, constant: 0).isActive = true

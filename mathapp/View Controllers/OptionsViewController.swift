@@ -27,7 +27,7 @@ class OptionsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let controller = self.navigationController {
-            controller.navigationItem.title = "Math 4 Kids"
+            controller.navigationItem.title = "Math 4 Tots"
         }
     }
     
